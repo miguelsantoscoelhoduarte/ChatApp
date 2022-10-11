@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rewrite>
+	<rules>
+		<rule name="Redirecting .html ext" stopProcessing="true">
+			<match url="^(.*).html"/>
+			<action type="Redirect" url="{R:1}"/>
+		</rule>
+		<rule name="Hide .html ext">
+			<match ignoreCase="true" url="^(.*)"/>
+			<conditions logicalGrouping="MatchAny">
+				<add input="{REQUEST_URI}" pattern="^.*\.(ashx|axd|css|gif|png|jpg|jpeg|js|flv|f4v)$" negate="true" />
+			</conditions>
+			<action type="Rewrite" url="{R:1}.html"/>
+		</rule>
+	</rules>
+</rewrite>
